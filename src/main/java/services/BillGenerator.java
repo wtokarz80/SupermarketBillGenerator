@@ -28,7 +28,12 @@ public class BillGenerator {
             }
             temp.sort(new ListComparator<>());
             int i = 1;
+
             while (amount > 0){
+                if(Integer.parseInt(temp.get(0).get(2)) > amount) {
+                    System.out.println("Not enough product: " + temp.get(0).get(1));
+                    break;
+                }
                 if(amount >= Integer.parseInt(temp.get(temp.size()-i).get(2))){
                     amount -= Integer.parseInt(temp.get(temp.size()-i).get(2));
                     totalPrice += Double.parseDouble(temp.get(temp.size()-i).get(3));
